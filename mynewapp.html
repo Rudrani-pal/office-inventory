@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <title>MVC</title>
+    <script id="sap-ui-bootstrap" type="text/javascript"
+            src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-libs="sap.m,sap.ui.table"
+            data-sap-ui-xx-bindingSyntax="complex">
+    </script>
+	<script id="oView" type="sapui5/xmlview">
+	<mvc:View
+	controllerName="mynewapp.controller.example"
+	 xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+		<detailPages>
+			<Page
+				id="detail1"
+				title="Items"
+				backgroundDesign= "Solid">
+	  <Table id="inventoryTable" mode="MultiSelect" selectionChange="onSelectionChange" items="{/ProductStoke}">
+	  <headerToolbar>
+	  <OverflowToolbar>
+	  <ToolbarSpacer/>
+	  <Button id="editButton" icon="sap-icon://edit" press="onEditPress"/>
+	  <Button id="addButton" icon="sap-icon://add-product" press="onAddPress"/>
+	  <Button id="deleteButton" icon="sap-icon://delete" press="onDeletePress"/>
+	  </OverflowToolbar>
+	  </headerToolbar>
+	  <columns>
+	  <Column>
+	  <Text text="Items"/>
+	  </Column>
+	  <Column>
+	  <Text text="Quantity"/>
+	  </Column>
+	  <Column>
+	  <Text text="Price"/>
+	  </Column>
+	  <Column>
+	  <Text text="Expiary Date"/>
+	  </Column>
+	  <Column>
+	  <Text text="Purchase Date"/>
+	  </Column>
+	  </columns>
+	  <ColumnListItem >
+	  <Text text="{name}"></Text>
+	  <Text text="{quantity}"></Text>
+	  <Text text="{price}"></Text>
+	  </ColumnListItem>
+	  </Table>
+	  <footer>
+	<Toolbar >
+	<ToolbarSpacer/>
+	<Button id="saveButton3" text="Save" type="Accept" press="onSave" />
+	<Button id="cancelButton3" text="Cancel" type="Reject" press="onCancel"/>
+	</Toolbar>
+			</footer>
+	
+	</Page>
+			<Page
+				id="detailDetail"
+				title="Sale"
+				backgroundDesign= "Solid"
+				showNavButton="true"
+				navButtonPress=".onPressDetailBack">
+				<VBox class="sapUiSmallMargin">
+	  <Table id="SaleTable">
+	  <headerToolbar>
+	  <OverflowToolbar>
+	  <ToolbarSpacer/>
+	  <Button id="SaleEditButton" icon="sap-icon://edit" press="onEditPress"/>
+	  <Button id="SaleAddButton" icon="sap-icon://add-product" press="onAddPress"/>
+	  <Button id="SaleDeleteButton" icon="sap-icon://delete" press="onDeletePress"/>
+	  </OverflowToolbar>
+	  </headerToolbar>
+	  <columns>
+	  <Column>
+	  <Text text="Employee Name"/>
+	  </Column>
+	  <Column>
+	  <Text text="Items Name"/>
+	  </Column>
+	  <Column>
+	  <Text text="Quantity"/>
+	  </Column>
+	  <Column>
+	  <Text text="Price"/>
+	  </Column>
+	  <Column>
+	  <Text text="Date"/>
+	  </Column>
+	  </columns>
+	  </Table>
+	</VBox>
+	<footer>
+	<Toolbar >
+	<ToolbarSpacer/>
+	<Button id="saveButton2" text="Save" type="Accept" press="onSave" />
+	<Button id="cancelButton2" text="Cancel" type="Reject" press="onCancel"/>
+	</Toolbar>
+	</footer>
+		
+	</Page>
+			<Page
+				id="detail2"
+				title="Stock"
+				backgroundDesign= "Solid"
+				showNavButton="true"
+				navButtonPress=".onPressDetailBack">
+				<Table id="StockLeftTable">
+	  <headerToolbar>
+	  <OverflowToolbar>
+	  <ToolbarSpacer/>
+	  <Button id="StockEditButton" icon="sap-icon://edit" press="onEditPress"/>
+	  <Button id="StockAddButton" icon="sap-icon://add-product" press="onAddPress"/>
+	  <Button id="StockDeleteButton" icon="sap-icon://delete" press="onDeletePress"/>
+	  </OverflowToolbar>
+	  </headerToolbar>
+	  <columns>
+	  <Column>
+	  <Text text="Items Name"/>
+	  </Column>
+	  <Column>
+	  <Text text="Quantity"/>
+	  </Column>
+	  <Column>
+	  <Text text="Reorder Date"/>
+	  </Column>
+      <Column>
+	  <Text text="Demand"/>
+	  </Column>
+	  </columns>
+	  </Table>
+	  <footer>
+				<Toolbar >
+					<ToolbarSpacer/>
+					<Button id="saveButton1" text="Save" type="Accept" press="onSave" />
+					<Button id="cancelButton1" text="Cancel" type="Reject" press="onCancel"/>
+				</Toolbar>
+			</footer>
+			</Page>
+
+			<Page
+				id="detail3"
+				title="Stock Overview"
+				backgroundDesign= "Solid"
+				showNavButton="true"
+				navButtonPress=".onPressDetailBack">
+				<Table id="PriceDetailsTable">
+	  <headerToolbar>
+	  <OverflowToolbar>
+	  <ToolbarSpacer/>
+	  <Button id="PriceEditButton" icon="sap-icon://edit" press="onEditPress"/>
+	  <Button id="PriceAddButton" icon="sap-icon://add-product" press="onAddPress"/>
+	  <Button id="PriceDeleteButton" icon="sap-icon://delete" press="onAddPress"/>
+	  </OverflowToolbar>
+	  </headerToolbar>
+	  <columns>
+	  <Column>
+	  <Text text="Items Name"/>
+	  </Column>
+	  <Column>
+	  <Text text="Quantity"/>
+	  </Column>
+	  <Column>
+	  <Text text="Date"/>
+	  </Column>
+	  <Column>
+	  <Text text="Total Price"/>
+	  </Column>
+	  </columns>
+	  </Table>
+	  <footer>
+				<Toolbar >
+					<ToolbarSpacer/>
+					<Button id="saveButton" text="Save" type="Accept" press="onSave" />
+					<Button id="cancelButton" text="Cancel" type="Reject" press="onCancel"/>
+				</Toolbar>
+			</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page
+				id="master"
+				title="Inventory"
+				backgroundDesign="List"
+				showNavButton="true"
+				navButtonPress=".onPressMasterBack">
+				<List itemPress=".onListItemPress">
+					<items>
+						<StandardListItem title="Items" type="Active" custom:to="detail1"/>
+						<StandardListItem title="Stock" type="Active" custom:to="detail2"/>
+						<StandardListItem title="Sale" type="Active" custom:to="detailDetail"/>
+						<StandardListItem title="Overview" type="Active" custom:to="detail3"/>
+					</items>
+				</List>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>
+
+	</script>
+    
+	<script src="mynewapp.js"></script>
+  </head>
+
+  <body class="sapUiBody" role="application">
+    <div id="content"></div>
+  </body>
+  </html>
