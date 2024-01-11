@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data with AJAX</title>
+</head>
+<body>
+
+<div id="data-display"></div>
+
+<script>
+// Use AJAX to fetch data from the server
+const xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'http://localhost:3002/api/data', false);
+
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        displayData(data);
+    }
+};
+
+xhr.send();
+
+// Function to display the data
+function displayData(data) {
+    const dataDisplay = document.getElementById('data-display');
+    dataDisplay.innerText = JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
